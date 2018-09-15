@@ -3,26 +3,36 @@ package com.skilldistillery.cards.common;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Hand {
+public /* abstract */ class Hand {
+
+	private List<Card> cards = new ArrayList<Card>();
 	
 	public Hand() {
 		
 	}
 
-	public int getHandValue(ArrayList<Card> hand) {
+//	public int getHandValue(ArrayList<Card> hand) {
+//		int handValue = 0;
+//		for (int i = 0; i < hand.size(); i++) {
+//			handValue += hand.get(i).getValue();
+//		}
+//		return handValue;
+//	}
+
+	public int getHandValue() {
 		int handValue = 0;
-		for (int i = 0; i < hand.size(); i++) {
-			handValue += hand.get(i).getValue();
+		for (int i = 0; i < cards.size(); i++) {
+			handValue += cards.get(i).getValue();
 		}
 		return handValue;
 	}
-	
-	public void addCard(int card) {
-		
+
+	public void addCard(Card card) {
+		cards.add(card);
 	}
 	
 	public void clearHand() {
-		
+		cards.clear();
 	}
 	
 	public List<Card> getCards() {
@@ -30,10 +40,29 @@ public abstract class Hand {
 		
 	}
 
-//	@Override
-////	public String toString() {
-//	//	return "Cards: " + getCards() + " with a value of " + getHandValue();
-//	}
+	@Override
+	public String toString() {
+		String s = "";
+	for (Card card : cards) {
+		s = s + card.toString() + ", ";
+	}
+	return s;
+	}
+	
+	public boolean didIBust() {
+		if (getHandValue() > 21) {
+			return true;
+		}
+		return false;
+		
+	}
+	
+	public boolean doIHaveBlackjack() {
+		if (getHandValue() == 21 && cards.size() == 2) {
+			return true;
+		}
+		return false;
+	}
 	
 	
 	
