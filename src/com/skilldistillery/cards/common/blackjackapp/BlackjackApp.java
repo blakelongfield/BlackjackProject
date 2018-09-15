@@ -1,13 +1,9 @@
 package com.skilldistillery.cards.common.blackjackapp;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
-import com.skilldistillery.cards.common.Card;
 import com.skilldistillery.cards.common.Deck;
 import com.skilldistillery.cards.common.Hand;
-import com.skilldistillery.cards.common.Suit;
 
 public class BlackjackApp {
 
