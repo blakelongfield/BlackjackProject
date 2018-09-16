@@ -14,29 +14,33 @@ public class BlackjackApp {
 		Hand playerHand = new BlackjackHand();
 		Hand houseHand = new BlackjackHand();
 
-		System.out.println("Would you like to begin a game of blackjack? y/n");
+		System.out.println("Would you like to start a game of blackjack? y/n");
 		System.out.print(">>:");
 		String input = sc.next();
-
+		
+		if (input.equals("n")) {
+			System.exit(0);		//exits program entirely
+		}
 		while (!input.equals("y")) {
 			System.out.println("Please enter a valid response.");
 			input = sc.next();
 		}
 		if (input.equals("y")) {
-			deck.shuffle();
-			playerHand.addCard(deck.dealCard());
-			playerHand.addCard(deck.dealCard());
+			deck.shuffle();		//shuffle deck
+			
+			playerHand.addCard(deck.dealCard());			//add first card to player deck
+			playerHand.addCard(deck.dealCard());			//add second card to player deck
 
-			houseHand.addCard(deck.dealCard());
+			houseHand.addCard(deck.dealCard());				//add first card to house deck
 			System.out.println("\nThe house flips one card over and then deals themself a..");
-			System.out.println(houseHand.toString());
+			System.out.println(houseHand.toString());		
 			System.out.println("House hand value: " + houseHand.getHandValue());
 
 			playPlayerHand(playerHand, deck);
 			if (playerHand.getHandValue() > 21) {
-				System.out.println("\nYou busted!");
+				System.out.println("\nYou busted!");		//exits game
 			} else {
-				playDealerHand(houseHand, deck);
+				playDealerHand(houseHand, deck);			
 			}
 			if (houseHand.getHandValue() == playerHand.getHandValue()) {
 				System.out.println("*************************");
@@ -64,8 +68,6 @@ public class BlackjackApp {
 	}
 
 	private static void playDealerHand(Hand houseHand, Deck deck2) {
-		// System.out.println(houseHand.toString());
-		// System.out.println(houseHand.getHandValue());
 		System.out.println("\nYou decide to stay and the dealer begins their turn.");
 		System.out.println("The dealer turns their other card over revealing their full hand..");
 
@@ -79,7 +81,7 @@ public class BlackjackApp {
 			}
 			if (houseHand.getHandValue() > 21) {
 				System.out.println("*************************");
-				System.out.println("\nThe dealer busts...");
+				System.out.println("\nThe dealer busts..");
 				System.out.println("\n*************");
 				System.out.println("*           *");
 				System.out.println("*  You win! *");
