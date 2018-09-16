@@ -39,17 +39,26 @@ public class BlackjackApp {
 				playDealerHand(houseHand, deck);
 			}
 			if (houseHand.getHandValue() == playerHand.getHandValue()) {
+				System.out.println("*************************");
 				System.out.println("\nHouse hand value: " + houseHand.getHandValue());
 				System.out.println("Player hand value: " + playerHand.getHandValue());
-				System.out.println("The game is a push and the game ends.");
+				System.out.println("The game ends in a push.");
 			}
 			if (houseHand.getHandValue() > playerHand.getHandValue() && houseHand.getHandValue() <= 21) {
+				System.out.println("*************************");
 				System.out.println("\nHouse hand value: " + houseHand.getHandValue());
 				System.out.println("Player hand value: " + playerHand.getHandValue());
 				System.out.println("\nThe house always wins!");
 			}
 			if (playerHand.getHandValue() > houseHand.getHandValue() && playerHand.getHandValue() <= 21) {
-				System.out.println("You win!");
+				System.out.println("*************************");
+				System.out.println("\nHouse hand value: " + houseHand.getHandValue());
+				System.out.println("Player hand value: " + playerHand.getHandValue());
+				System.out.println("\n*************");
+				System.out.println("*           *");
+				System.out.println("*  You win! *");
+				System.out.println("*           *");
+				System.out.println("*************");
 			}
 		}
 	}
@@ -63,34 +72,39 @@ public class BlackjackApp {
 		while (houseHand.getHandValue() <= 16) {
 			houseHand.addCard(deck2.dealCard());
 			System.out.println(houseHand.toString());
-			System.out.println(houseHand.getHandValue());
+			System.out.println("House hand value: " + houseHand.getHandValue() + "\n");
 			if (houseHand.getHandValue() <= 16) {
 				System.out.println("The dealer has less than 17 and must hit");
-				System.out.println("The dealer deals a card and their full deck is shown..");
+				System.out.println("The dealer deals a card and they now have...");
 			}
 			if (houseHand.getHandValue() > 21) {
-				System.out.println("\nThe dealer busted and you win!!");
+				System.out.println("*************************");
+				System.out.println("\nThe dealer busts...");
+				System.out.println("\n*************");
+				System.out.println("*           *");
+				System.out.println("*  You win! *");
+				System.out.println("*           *");
+				System.out.println("*************");
 			}
 		}
 	}
 
 	private static void playPlayerHand(Hand playerHand, Deck remainingDeck) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println();
-		System.out.println("You're dealt a " + playerHand.toString());
+		System.out.println("\nYou're dealt a " + playerHand.toString());
 		System.out.println("Your hand value: " + playerHand.getHandValue() + "\n");
-
 		System.out.println("Would you like to [h]it or [s]tay?");
 		String inputHitOrStay = sc.next();
 		
 		while (playerHand.getHandValue() <= 21 && inputHitOrStay.equals("h")) {
 			playerHand.addCard(remainingDeck.dealCard());
-			System.out.println("your cards are: " + playerHand.toString());
+			System.out.println("\nThe dealer deals you another card...");
+			System.out.println("Your cards are: " + playerHand.toString());
 			System.out.println("Your hand value: " + playerHand.getHandValue());
 			if (playerHand.getHandValue() > 21) {
 				break;
 			}
-			System.out.println("Would you like to [h]it or [s]tay?");
+			System.out.println("\nWould you like to [h]it or [s]tay?");
 			inputHitOrStay = sc.next();
 		}
 	}
