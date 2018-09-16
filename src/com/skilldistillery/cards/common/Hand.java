@@ -3,21 +3,13 @@ package com.skilldistillery.cards.common;
 import java.util.ArrayList;
 import java.util.List;
 
-public /* abstract */ class Hand {
+public  abstract  class Hand {
 
 	private List<Card> cards = new ArrayList<Card>();
 	
 	public Hand() {
 		
 	}
-
-//	public int getHandValue(ArrayList<Card> hand) {
-//		int handValue = 0;
-//		for (int i = 0; i < hand.size(); i++) {
-//			handValue += hand.get(i).getValue();
-//		}
-//		return handValue;
-//	}
 
 	public int getHandValue() {
 		int handValue = 0;
