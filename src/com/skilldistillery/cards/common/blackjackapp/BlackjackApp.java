@@ -38,7 +38,7 @@ public class BlackjackApp {
 
 			playPlayerHand(playerHand, deck);
 			if (playerHand.getHandValue() > 21) {
-				System.out.println("\nYou busted!");		//exits game
+				System.out.println("\nYou busted!");		//exits the game if the user busts
 			} else {
 				playDealerHand(houseHand, deck);			
 			}
