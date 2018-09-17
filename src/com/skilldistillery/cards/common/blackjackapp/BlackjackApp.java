@@ -18,6 +18,7 @@ public class BlackjackApp {
 		System.out.print(">>:");
 		String input = sc.next();
 		
+		while (true) {
 		if (input.equals("n")) {
 			System.exit(0);		//exits program entirely
 		}
@@ -64,8 +65,16 @@ public class BlackjackApp {
 				System.out.println("*           *");
 				System.out.println("*************");
 			}
+		} System.out.println("Would you like to play again? y/n");
+		playerHand.clearHand();
+		houseHand.clearHand();
+		input = sc.next();
+		if (deck.checkDeckSize() < 45) {
+			deck.createDeck();
 		}
-	}
+		
+		}
+}
 
 	private static void playDealerHand(Hand houseHand, Deck deck2) {
 		System.out.println("\nYou decide to stay and the dealer begins their turn.");

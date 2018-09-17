@@ -58,21 +58,18 @@ public abstract class Hand {
 
 	public StringBuilder doIHaveBlackjack(Hand playerHand) {
 		StringBuilder sb = new StringBuilder();
-		if (getHandValue() != 21) {
+		if (getHandValue() != 21 && cards.size() == 2) {
 			return null;
+		} else if (getHandValue() == 21 && cards.size() == 2) {
+			sb.append("BLACKJACK!");
+			sb.append("\n*************");
+			sb.append("*           *");
+			sb.append("*  You win! *");
+			sb.append("*           *");
+			sb.append("*************");
+			return sb;
 		}
-		else if (getHandValue() == 21 && cards.size() == 2) {
-				sb.append("BLACKJACK!");
-				sb.append("\n*************");
-				sb.append("*           *");
-				sb.append("*  You win! *");
-				sb.append("*           *");
-				sb.append("*************");
-				return sb;
-			}
-		else {
-			return null;
-		}
+		return null;
 
 	}
 
